@@ -1,31 +1,51 @@
-# Module 12 Report Template
+# Credit Risk Analysis Report
 
 ## Overview of the Analysis
 
-In this section, describe the analysis you completed for the machine learning models used in this Challenge. This might include:
+When lending companies lend money to borrowers, they are expecting the borrower to return or repay the lender. Credit Risk (the borrower not returning the asset or paying back the loan) can cause the lender to lose money. With this analysis we will use Machine Learning to analyze historical lending activity to build a model that can identify whether a borrower is a credit risk or not.
 
-* Explain the purpose of the analysis.
-* Explain what financial information the data was on, and what you needed to predict.
-* Provide basic information about the variables you were trying to predict (e.g., `value_counts`).
-* Describe the stages of the machine learning process you went through as part of this analysis.
-* Briefly touch on any methods you used (e.g., `LogisticRegression`, or any resampling method).
+This analysis will use the Logistic Regression Algorithim to determine which loans are healthy (low-risk) or non-healthy (high-risk) based on loan status provided by a lending company.
+
+Using the dataset provided, a Logistic Regression Model was created that generated an accuracy score of 95%. The model generates high-accuracy, but further analysis reveals that the model's recall value (0.91) for non-healthy loans is lower than the recall value (0.99) of healthy loans. This shows that the model will better predict the loan status as healthy. This may be due to the imbalance of the dataset, i.e. there are more healthy loans documented than non-healthy loans.
+
+Taking a look at the value counts of the data reveals the imbalance of the data. The majority of the data is about healthy loans (0) and there is less data available about non-healthy loans (1).
+```
+y_var.value_counts()
+0    75036
+1     2500
+Name: loan_status, dtype: int64
+```
+To generate a higher accuracy score, the data is oversampled by using RandomOverSampler to create a more balanced dataset.
+
+```
+y_random_model.value_counts()
+0    56271
+1    56271
+Name: loan_status, dtype: int64
+```
+Using the provided dataset, a Logistic Regression model fit with oversampled data is created that generates an accuracy score of 99% (higher than the model fitted with imbalanced data). The model's non-healthy loans recall value increased to 0.99, indicating the model will perform better on both healthy and non-healthy loans.
 
 ## Results
 
-Using bulleted lists, describe the balanced accuracy scores and the precision and recall scores of all machine learning models.
+* Machine Learning Model 1 (The Logistic Regression model with imbalanced data):
+  * Predicted healthy loans 100% of the time
+  * Predicted non-healthy loans 85% of the time
+  * Is more likely to:
+    * mistakenly classify a healthy loan as a non-healthy loan
+    * mistakenly classify a non healthy loan as a healthy loan
+  * Generated an accuracy score of 95%
+  * Made a mistake 1% of the time when predicting healthy loans
+  * Made a mistake 9% of the time with predicting non-healthy loans
 
-* Machine Learning Model 1:
-  * Description of Model 1 Accuracy, Precision, and Recall scores.
 
-
-
-* Machine Learning Model 2:
-  * Description of Model 2 Accuracy, Precision, and Recall scores.
+* Machine Learning Model 2 (The Logistic Regression model with balanced data):
+  * Has a much lower chance of making these mistakes:
+    * mistaking a healthy loan for a non-healthy loan
+    * mistaking a non-healthy loan for a healthy loan 
+  * Made a mistake 1% of the time when predicting healthy loans
+  * Made a mistake 1% of the time when predicting non-healthy loans
+  * Generated an accuracy score of 99%
 
 ## Summary
 
-Summarize the results of the machine learning models, and include a recommendation on the model to use, if any. For example:
-* Which one seems to perform best? How do you know it performs best?
-* Does performance depend on the problem we are trying to solve? (For example, is it more important to predict the `1`'s, or predict the `0`'s? )
 
-If you do not recommend any of the models, please justify your reasoning.
