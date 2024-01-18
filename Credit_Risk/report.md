@@ -48,4 +48,4 @@ Using the provided dataset, a Logistic Regression model fit with oversampled dat
 
 ## Summary
 
-
+The Logistic Regression model that used OverSampled data had more balanced data and overall performed better. This model generated a higher accuracy score and a higher recall, meaning it will make fewer mistakes. This is the model I would recommend for use.
