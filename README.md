@@ -1,5 +1,5 @@
 # credit-risk-classification
- Module 20
+Module 20
 
 Authored by Rachel Woodill
 
@@ -7,6 +7,10 @@ Authored by Rachel Woodill
 main file: Credit_Risk > credit_risk_classification.ipynb
 
 data: Credit_Risk > Resources > lending_data.csv
+
+report: Credit_Risk > report.md
+
+report template: Credit_Risk > report-template-Untouched.md
 
 # Instructions
 The instructions for this Challenge are divided into the following subsections:
